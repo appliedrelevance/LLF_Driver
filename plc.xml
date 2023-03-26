@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="Applied Relevance" productName="Logistics Learning Factory" productVersion="1" creationDateTime="2023-03-23T09:44:34" companyURL="https://epinomy.com"/>
+  <contentHeader name="LLFDriver" modificationDateTime="2023-03-24T16:51:22" author="George D. Everitt" organization="Applied Relevance, LLC">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="10" y="10"/>
+      </fbd>
+      <ld>
+        <scaling x="10" y="10"/>
+      </ld>
+      <sfc>
+        <scaling x="10" y="10"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="Driver" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="prevOPTO">
+              <type>
+                <array>
+                  <dimension lower="0" upper="15"/>
+                  <baseType>
+                    <BOOL/>
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="i">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="OPTO_00" address="%IX0.0">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_01" address="%IX0.1">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_02" address="%IX0.2">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_03" address="%IX0.3">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_04" address="%IX0.4">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_05" address="%IX0.5">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_06" address="%IX0.6">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_07" address="%IX0.7">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_10" address="%IX1.0">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_11" address="%IX1.1">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_12" address="%IX1.2">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_13" address="%IX1.3">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_14" address="%IX1.4">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_15" address="%IX1.5">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_16" address="%IX1.6">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="OPTO_17" address="%IX1.7">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="currentOPTO">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="RELAY_00" address="%QX0.0">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_01" address="%QX0.1">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_02" address="%QX0.2">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_03" address="%QX0.3">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_04" address="%QX0.4">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_05" address="%QX0.5">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_06" address="%QX0.6">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_07" address="%QX0.7">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_10" address="%QX1.0">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_11" address="%QX1.1">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_12" address="%QX1.2">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_13" address="%QX1.3">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_14" address="%QX1.4">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_15" address="%QX1.5">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_16" address="%QX1.6">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+            <variable name="RELAY_17" address="%QX1.7">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="False"/>
+              </initialValue>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[FOR i := 0 TO 15 DO
+    CASE i OF
+        0: currentOPTO := OPTO_00;
+        1: currentOPTO := OPTO_01;
+        2: currentOPTO := OPTO_02;
+        3: currentOPTO := OPTO_03;
+        4: currentOPTO := OPTO_04;
+        5: currentOPTO := OPTO_05;
+        6: currentOPTO := OPTO_06;
+        7: currentOPTO := OPTO_07;
+        8: currentOPTO := OPTO_10;
+        9: currentOPTO := OPTO_11;
+        10: currentOPTO := OPTO_12;
+        11: currentOPTO := OPTO_13;
+        12: currentOPTO := OPTO_14;
+        13: currentOPTO := OPTO_15;
+        14: currentOPTO := OPTO_16;
+        15: currentOPTO := OPTO_17;
+    END_CASE;
+
+    IF currentOPTO AND NOT prevOPTO[i] THEN
+        CASE i OF
+            0: RELAY_00 := NOT RELAY_00;
+            1: RELAY_01 := NOT RELAY_01;
+            2: RELAY_02 := NOT RELAY_02;
+            3: RELAY_03 := NOT RELAY_03;
+            4: RELAY_04 := NOT RELAY_04;
+            5: RELAY_05 := NOT RELAY_05;
+            6: RELAY_06 := NOT RELAY_06;
+            7: RELAY_07 := NOT RELAY_07;
+            8: RELAY_10 := NOT RELAY_10;
+            9: RELAY_11 := NOT RELAY_11;
+            10: RELAY_12 := NOT RELAY_12;
+            11: RELAY_13 := NOT RELAY_13;
+            12: RELAY_14 := NOT RELAY_14;
+            13: RELAY_15 := NOT RELAY_15;
+            14: RELAY_16 := NOT RELAY_16;
+            15: RELAY_17 := NOT RELAY_17;
+        END_CASE;
+    END_IF;
+
+    prevOPTO[i] := currentOPTO;
+END_FOR;
+]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="Config0">
+        <resource name="Res0">
+          <task name="task0" priority="0" interval="T#20ms"/>
+          <pouInstance name="instance0" typeName="Driver"/>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>
